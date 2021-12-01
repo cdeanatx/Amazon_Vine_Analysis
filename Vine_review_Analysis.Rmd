@@ -1,0 +1,52 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+vine_table <- read.csv('vine_table.csv')
+head(vine_table)
+```
+
+```{r}
+vine_total_votes <- vine_table %>% filter(total_votes >= 20)
+head(vine_total_votes)
+```
+
+```{r}
+vine_helpful_votes <- vine_total_votes %>% filter(helpful_votes / total_votes >= .5)
+head(vine_helpful_votes)
+```
+
+```{r}
+vine_paid <- vine_helpful_votes %>% filter(vine == 'Y')
+head(vine_paid)
+```
+
+```{r}
+vine_unpaid <- vine_helpful_votes %>% filter(vine == 'N')
+head(vine_unpaid)
+```
+
+```{r}
+n_total_paid <- vine_paid %>% summarize(n())
+n_fivestar_paid <- vine_paid %>% filter(star_rating == 5) %>% summarize(n())
+pct_fivestar_paid <- n_fivestar_paid / n_total_paid * 100
+
+n_total_unpaid <- vine_unpaid %>% summarize(n())
+n_fivestar_unpaid <- vine_unpaid %>% filter(star_rating == 5) %>% summarize(n())
+pct_fivestar_unpaid <- n_fivestar_unpaid / n_total_unpaid * 100
+```
+
+```{r}
+paid_analysis <- c(n_total_paid, n_fivestar_paid, pct_fivestar_paid)
+names(paid_analysis) <- c('num_reviews', 'num_fivestar_reviews', 'pct_fivestar_reviews')
+paid_analysis
+```
+```{r}
+unpaid_analysis <- c(n_total_unpaid, n_fivestar_unpaid, pct_fivestar_unpaid)
+names(unpaid_analysis) <- c('num_reviews', 'num_fivestar_reviews', 'pct_fivestar_reviews')
+unpaid_analysis
+```
+
