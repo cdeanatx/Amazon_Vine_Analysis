@@ -130,3 +130,6 @@ dmypy.json
 
 # Large CSV
 vine_table.csv
+
+# R
+.Rhistory
