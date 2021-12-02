@@ -39,3 +39,12 @@ pct_fivestar_unpaid <- n_fivestar_unpaid / n_total_unpaid * 100 #Determine perce
 
 ###### Vine Reviews
 
+![vine_results](https://github.com/cdeanatx/Amazon_Vine_Analysis/blob/main/images/vine_results.png)
+
+###### Non-Vine Reviews
+
+![non-vine_results](https://github.com/cdeanatx/Amazon_Vine_Analysis/blob/main/images/non-vine_results.png)
+
+## Summary of Results
+
+Based on the results, we are unable to determine whether positivity bias for Vine reviews exists. Without a reasonable number of datapoints, this is impossible to determine accurately. In order to make this determination, we could widen our initial parameters for total number of reviews and percentage of helpful reviews.
